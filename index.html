@@ -5,12 +5,12 @@
  
 
      <meta charset="utf-8">
-<title>kalendarz</title>
+<title>main</title>
 
  
 
      <meta name="description" content="tak">
-<meta name="keywords" content="kalendarz">
+<meta name="keywords" content="koy0ti">
 <meta name="author" content="Mieszko Rzadkowski">
 
  
@@ -25,21 +25,16 @@
 <body style="background-color:#000000;">
 
 
-<br>
-    <a href="plan lekcji.html">plan lekcji</a>
- 
-<br>
-    <a href="kalendarz.html">kalendarz</a>
- 
- <br>
-    <a href="colspan.html">COLSPAN</a>
- 
- <script src="script.js" async></script> 
-
-<!-- theme 
 
 
-        <canvas id="nokey" width="0" height="2000">
+
+
+
+    
+<!-- theme -->
+
+
+        <canvas id="nokey" width="1042" height="1280">
         
             <script>
                 var canvas = document.getElementById('nokey'),
@@ -48,7 +43,7 @@
    ctx = canvas.getContext('2d');
 
 // console.log(typeof can_w);
-var BALL_NUM = 30
+var BALL_NUM = 40
 
 var ball = {
       x: 0,
@@ -60,8 +55,8 @@ var ball = {
       phase: 0
    },
    ball_color = {
-       r: 207,
-       g: 255,
+       r: 190,
+       g: 0,
        b: 4
    },
    R = 2,
@@ -215,7 +210,7 @@ function renderLines(){
            if(fraction < 1){
                alpha = (1 - fraction).toString();
 
-               ctx.strokeStyle = 'rgba(150,150,150,'+alpha+')';
+               ctx.strokeStyle = 'rgba(150,0,0,'+alpha+')';
                ctx.lineWidth = link_line_width;
                
                ctx.beginPath();
@@ -327,9 +322,10 @@ canvas.addEventListener('mousemove', function(e){
         </canvas>
 
         
--->
 
 
+
+        
 
 
 </body>
