@@ -3,7 +3,6 @@ var canvas = document.getElementById('nokey'),
    can_h = parseInt(canvas.getAttribute('height')),
    ctx = canvas.getContext('2d');
 
-// console.log(typeof can_w);
 var BALL_NUM = 40
 
 var ball = {
@@ -25,7 +24,7 @@ var ball = {
    alpha_f = 0.03,
    alpha_phase = 0,
     
-// Line
+// Linie
    link_line_width = 0.8,
    dis_limit = 260,
    add_mouse_point = true,
@@ -39,7 +38,7 @@ var ball = {
       type: 'mouse'
    };
 
-// Random speed
+// skrypt od predkosci kul
 function getRandomSpeed(pos){
     var  min = -1,
        max = 1;
@@ -68,7 +67,7 @@ function randomNumFrom(min, max){
     return Math.random()*(max - min) + min;
 }
 console.log(randomNumFrom(0, 10));
-// Random Ball
+// losowa generacja kul
 function getRandomBall(){
     var pos = randomArrayItem(['top', 'right', 'bottom', 'left']);
     switch(pos){
@@ -122,7 +121,7 @@ function randomSidePos(length){
     return Math.ceil(Math.random() * length);
 }
 
-// Draw Ball
+// kule
 function renderBalls(){
     Array.prototype.forEach.call(balls, function(b){
        if(!b.hasOwnProperty('type')){
@@ -135,7 +134,7 @@ function renderBalls(){
     });
 }
 
-// Update balls
+// kule laczenia
 function updateBalls(){
     var new_balls = [];
     Array.prototype.forEach.call(balls, function(b){
@@ -146,21 +145,19 @@ function updateBalls(){
            new_balls.push(b);
         }
         
-        // alpha change
         b.phase += alpha_f;
         b.alpha = Math.abs(Math.cos(b.phase));
-        // console.log(b.alpha);
     });
     
     balls = new_balls.slice(0);
 }
 
-// loop alpha
+// petla alpha
 function loopAlphaInf(){
     
 }
 
-// Draw lines
+// linie miedzy kulami
 function renderLines(){
     var fraction, alpha;
     for (var i = 0; i < balls.length; i++) {
@@ -184,7 +181,7 @@ function renderLines(){
     }
 }
 
-// calculate distance between two points
+// oblivzanie dystansu miedzy kulami
 function getDisOf(b1, b2){
     var  delta_x = Math.abs(b1.x - b2.x),
        delta_y = Math.abs(b1.y - b2.y);
@@ -192,14 +189,14 @@ function getDisOf(b1, b2){
     return Math.sqrt(delta_x*delta_x + delta_y*delta_y);
 }
 
-// add balls if there a little balls
+// generacja kul jesli jest za malo
 function addBallIfy(){
     if(balls.length < BALL_NUM){
         balls.push(getRandomBall());
     }
 }
 
-// Render
+// render
 function render(){
     ctx.clearRect(0, 0, can_w, can_h);
     
@@ -214,7 +211,7 @@ function render(){
     window.requestAnimationFrame(render);
 }
 
-// Init Balls
+// Init KULE           WAZNE 
 function initBalls(num){
     for(var i = 1; i <= num; i++){
         balls.push({
@@ -228,10 +225,10 @@ function initBalls(num){
         });
     }
 }
-// Init Canvas
+// Init Canvas           WAZNE 
 function initCanvas(){
-    canvas.setAttribute('width', window.innerWidth);
-    canvas.setAttribute('height', window.innerHeight);
+    canvas.setAttribute('width', '2000');
+    canvas.setAttribute('height', '1000');
     
     can_w = parseInt(canvas.getAttribute('width'));
     can_h = parseInt(canvas.getAttribute('height'));
@@ -248,7 +245,7 @@ function goMovie(){
 }
 goMovie();
 
-// Mouse effect
+// MYSZKA
 canvas.addEventListener('mouseenter', function(){
     console.log('mouseenter');
     mouse_in = true;
@@ -269,5 +266,4 @@ canvas.addEventListener('mousemove', function(e){
     var e = e || window.event;
     mouse_ball.x = e.pageX;
     mouse_ball.y = e.pageY;
-    // console.log(mouse_ball);
 });
